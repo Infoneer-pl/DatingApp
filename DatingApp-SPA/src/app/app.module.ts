@@ -26,6 +26,9 @@ import { UserService } from './_services/user.service';
 import { AlertifyService } from './_services/alertify.service';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { GalleryModule } from 'ng-gallery'
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -40,6 +43,7 @@ export function tokenGetter() {
     MemberListComponent,
     MemberCardComponent,
     MemberDetailComponent,
+    MemberEditComponent,
     ListsComponent,
     MessagesComponent,
   ],
@@ -67,7 +71,9 @@ export function tokenGetter() {
     UserService,
     AlertifyService,
     MemberDetailResolver,
-    MemberListResolver
+    MemberListResolver,
+    MemberEditResolver,
+    PreventUnsavedChanges,
   ],
   bootstrap: [AppComponent],
 })
